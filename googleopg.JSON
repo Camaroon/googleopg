@@ -1,0 +1,35 @@
+[
+    {
+        "id": "marker1",
+        "navn": "MoonBar",
+        "beskrivelse": "HEY! kom ind og drik en øl!",
+        "motto": "Den øl smagt da vist lige af en til"
+
+    },
+    {
+        "id": "marker2",
+        "navn": "Rygergården",
+        "beskrivelse": "socialt samvær og dårlige lunger.. KOM FRISK",
+        "motto": "Den der ryger.. giver sq lige en smøg til"
+    },
+    {
+        "id": "marker3",
+        "navn": "Lidl",
+        "beskrivelse": "Food-mekka for os som studerende. . ",
+        "motto": "valnøddestykker... smager himmelsk!!"
+    },
+
+    {
+        "id": "marker4",
+        "navn": "Meels On Weels",
+        "beskrivelse": "Survival kit 1.01",
+        "motto": "Kaffe.. aldrig gå ned på kaffe"
+    },
+    {
+        "id": "marker4",
+        "navn": "Toilet",
+        "beskrivelse": "den evige hjælper i ale situationer - position:fixed",
+        "motto": "husk for helvede at trække ud!"
+    },
+
+]

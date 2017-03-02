@@ -147,6 +147,21 @@
 
 
 
+            // marker Fitness World
+            var FWlatlng = {
+                lat: 55.706884,
+                lng: 12.587445
+            }
+            var marker2 = new google.maps.Marker({
+                position: FWlatlng,
+                map: map,
+                title: 'ass to the grass',
+                //icon: 'bicep.png'
+                animation: google.maps.Animation.DROP
+            });
+
+
+            // marker trelleborggade
             var myHomeMarker = {
                 lat: 55.706887,
                 lng: 12.593779
@@ -159,10 +174,14 @@
             });
 
             var infowindow = new google.maps.InfoWindow({
-                    content: "this is home.. home is good!"
-                })
-                // event listner på marker skal skrives som addListener,
+                content: "this is home.. home is good!"
+            })
+
+
+            // klik på marker og vis info:
+            // event listner på marker skal skrives som addListener,
             marker1.addListener("click", clickOnMarker);
+            marker2.addListener("click", clickOnMarker);
 
             //zoom, inforWondow og set center
             function clickOnMarker() {
@@ -180,19 +199,10 @@
                 infowindow.setContent(klon);
                 infowindow.open(map, marker1);
 
+
             }
 
-            var FWlatlng = {
-                lat: 55.706884,
-                lng: 12.587445
-            }
-            var marker2 = new google.maps.Marker({
-                position: FWlatlng,
-                map: map,
-                title: 'ass to the grass',
-                //icon: 'bicep.png'
-                animation: google.maps.Animation.DROP
-            });
+
 
         }
 

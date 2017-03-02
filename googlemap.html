@@ -14,11 +14,13 @@
 </head>
 
 <body>
-    <div id="info">
-        <h1> information om hvor du er</h1>
-        <p> en øl kommer aldrig alene! </p>
-        <p> kantinen trænger til en update.. </p>
-    </div>
+    <template id="template_info">
+        <div id="info">
+            <h1> information om hvor du er</h1>
+            <p> en øl kommer aldrig alene! </p>
+            <p> kantinen trænger til en update.. </p>
+        </div>
+    </template>
     <div id="map"></div>
     <script>
         var map;
@@ -167,9 +169,16 @@
                 console.log("der er blevet klikket på ikon");
                 map.setCenter(myHomeMarker);
                 map.setZoom(18);
-                infowindow.setContent(info);
-                infowindow.open(map, marker1);
+
                 animation: google.maps.Animation.DROP;
+
+
+                // klon af info template
+                var klon = document.querySelector("#template_info").content.cloneNode(true);
+
+                //indset child til klon
+                infowindow.setContent(klon);
+                infowindow.open(map, marker1);
 
             }
 

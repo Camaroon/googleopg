@@ -140,7 +140,8 @@
             var marker1 = new google.maps.Marker({
                 position: myHomeMarker,
                 map: map,
-                title: "I'm HOME"
+                title: "I'm HOME",
+                animation: google.maps.Animation.DROP
             });
 
             var infowindow = new google.maps.InfoWindow({
@@ -155,19 +156,21 @@
                 map.setCenter(myHomeMarker);
                 map.setZoom(18);
                 infowindow.open(map, marker1);
+                animation: google.maps.Animation.DROP;
 
             }
 
-            //            var FWlatlng = {
-            //                lat: 55.706884,
-            //                lng: 12.587445
-            //            }
-            //            var marker2 = new google.maps.Marker({
-            //                position: FWlatlng,
-            //                map: map,
-            //                title: 'ass to the grass',
-            //                icon: 'bicep.png'
-            //            });
+            var FWlatlng = {
+                lat: 55.706884,
+                lng: 12.587445
+            }
+            var marker2 = new google.maps.Marker({
+                position: FWlatlng,
+                map: map,
+                title: 'ass to the grass',
+                //icon: 'bicep.png'
+                animation: google.maps.Animation.DROP
+            });
 
         }
 

@@ -18,7 +18,7 @@
     <script>
         function initMap() {
             // Styles a map in "night mode".
-            var map = new google.maps.Map(document.getElementById('map'), {
+            var map = new google.maps.Map(document.querySelector('#map'), {
                 center: {
                     lat: 55.706467,
                     lng: 12.539116
@@ -132,15 +132,43 @@
                 }]
             });
 
-            var myLatLng2 = {
+
+            var myHomeMarker = {
                 lat: 55.706887,
                 lng: 12.593779
             }
-            var marker = new google.maps.Marker({
-                position: myLatLng2,
+            var marker1 = new google.maps.Marker({
+                position: myHomeMarker,
                 map: map,
-                title: 'Hello World!'
+                title: "I'm HOME"
             });
+
+            var infowindow = new google.maps.InfoWindow({
+                    content: "this is home.. home is good!"
+                })
+                // event listner på marker skal skrives som addListener,
+            marker1.addListener("click", clickOnMarker);
+
+            //zoom, inforWondow og set center
+            function clickOnMarker() {
+                console.log("der er blevet klikket på ikon");
+                map.setCenter(myHomeMarker);
+                map.setZoom(18);
+                infowindow.open(map, marker1);
+
+            }
+
+            //            var FWlatlng = {
+            //                lat: 55.706884,
+            //                lng: 12.587445
+            //            }
+            //            var marker2 = new google.maps.Marker({
+            //                position: FWlatlng,
+            //                map: map,
+            //                title: 'ass to the grass',
+            //                icon: 'bicep.png'
+            //            });
+
         }
 
     </script>

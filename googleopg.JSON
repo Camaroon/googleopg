@@ -6,6 +6,7 @@
             "lat": 55.706325,
             "lng": 12.539506
         },
+        "billede": "",
         "beskrivelse": "HEY! kom ind og drik en øl!",
         "motto": "Den øl smagt da vist lige af en til"
 
@@ -40,6 +41,7 @@
             "lat": 55.706447,
             "lng": 12.539314
         },
+        "billede": "",
         "beskrivelse": "Survival kit 1.01",
         "motto": "Kaffe.. aldrig gå ned på kaffe"
     },
@@ -50,6 +52,7 @@
             "lat": 55.706371,
             "lng": 12.539258
         },
+        "billede": "",
         "beskrivelse": "Den evige hjælper i ale situationer - position:fixed",
         "motto": "husk for helvede at trække ud!"
     }

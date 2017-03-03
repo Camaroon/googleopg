@@ -1,6 +1,7 @@
 var map;
 var info;
 var liste;
+var infoMarker;
 
 function initMap() {
     // Styles a map in "night mode".
@@ -123,91 +124,125 @@ function initMap() {
 
 
     $.getJSON("googleopg.JSON", harLoadetJSON);
-    console.log("har loadet JSON");
+
 
     function harLoadetJSON(data) {
+        console.log("har loadet JSON");
         liste = data;
+        liste.forEach(createMarker);
+        console.log("vis indhold");
 
     }
 
-    function findMarker(event) {
-        var valgtMarker = event.target.id;
-        console.log("clickOnMarker" + valgtMarker);
-        //for hvert punkt i listen aktiverers grundet "forEach" - JSON fil
-        liste.forEach(infoJASON);
+    function createMarker(infoMarker) {
+        var marker = new google.maps.Marker({
+            position: infoMarker.position,
+            map: map,
+            title: infoMarker.navn
+                //icon: infoMarker.icon
+        });
+
+
+        // create inforwindow to go with marker
+        var infowindow = new google.maps.InfoWindow({
+            content: "don't care - overwrite with template",
+            position: infoMarker.position
+        });
+
+        marker.addListener("click", function () {
+
+            var clone = document.querySelector('#template_info').content.cloneNode(true);
+            console.log("der er blevet klikket på ikon");
+            //set data in clone (from infoMarker)
+            clone.querySelector(".navn").textContent = infoMarker.navn;
+            clone.querySelector(".beskrivelse").innerHTML = infoMarker.beskrivelse;
+            clone.querySelector(".motto").innerHTML = infoMarker.motto;
+            //husk at sætte billeder ind!!
+            clone.querySelector(".billede").src = "img/" + infoMarker.billede;
+            infowindow.setContent(clone);
+            infowindow.open(map);
+
+            //ekstra settings
+            map.setCenter(infoMarker.position);
+            map.setZoom(18);
+            animation: google.maps.Animation.DROP;
+
+        });
+
     }
-
-    function findInfoiJSON(Information) {
-        if (Information.id == valgtMarker) {
-            // klon af info template
-            var klon = document.querySelector("#template_info").content.cloneNode(true);
-
-            klon.querySelector(".navn").textContent = Information.navn;
-            klon.querySelector(".lat").textContent = Information.lat;
-            klon.querySelector(".lng").textContent = Information.lng;
-            klon.querySelector(".beskrivelse").textContent = Information.beskrivelse;
-            klon.querySelector(".motto").textContent = Information.motto;
-
-            document.querySelector("#template_info").innerHTML = "";
-            document.querySelector("#template_info").appendChild(klon);
-
-        }
-    }
-
-
-
-
-    //zoom, inforWondow og set center
-    function clickOnMarker() {
-        console.log("der er blevet klikket på ikon");
-        map.setCenter(myHomeMarker);
-        map.setZoom(18);
-
-        animation: google.maps.Animation.DROP;
-
-        //indset child til klon
-        infowindow.setContent(klon);
-        infowindow.open(map, marker1);
-
-        // klik på marker og vis info:
-        // event listner på marker skal skrives som addListener,
-        marker1.addListener("click", clickOnMarker);
-        marker2.addListener("click", clickOnMarker);
-    }
-
-
-
-    // marker rygergården
-    var Rygergaarden = {
-        lat: 55.706887,
-        lng: 12.593779
-    }
-    var marker1 = new google.maps.Marker({
-        position: Rygergaarden,
-        map: map,
-        title: "I'm HOME",
-        animation: google.maps.Animation.DROP
-    });
-
-    // marker Moonbar
-    var Moonbar = {
-        lat: 55.706404,
-        lng: 12.539379
-    }
-    var marker2 = new google.maps.Marker({
-        position: Moonbar,
-        map: map,
-        title: 'ass to the grass',
-        //icon: 'bicep.png'
-        animation: google.maps.Animation.DROP
-    });
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+// infowindow
+/*
+var infowindow = new google.maps.InfoWindow({
+    content: "hvad mon der kan stå her?",
+    position: zoo
+});*/
+
+
+
+//zoom, inforWondow og set center
+//function clickOnMarker() {
+//    console.log("der er blevet klikket på ikon");
+//    map.setCenter(createMarker);
+//    map.setZoom(18);
+//
+//    animation: google.maps.Animation.DROP;
+//
+//    //indset child til klon
+//    infowindow.setContent(clon);
+//    infowindow.open(map, marker1);
+
+
+
+
+
+
+////zoom, inforWondow og set center
+//function clickOnMarker() {
+//    console.log("der er blevet klikket på ikon");
+//    map.setCenter(myHomeMarker);
+//    map.setZoom(18);
+//
+//    animation: google.maps.Animation.DROP;
+//
+//    //indset child til klon
+//    infowindow.setContent(klon);
+//    infowindow.open(map, marker1);
+//
+//    // klik på marker og vis info:
+//    // event listner på marker skal skrives som addListener,
+//    marker1.addListener("click", clickOnMarker);
+//    marker2.addListener("click", clickOnMarker);
+//}
+//
+
+
+//// marker rygergården
+//var Rygergaarden = {
+//    lat: 55.706887,
+//    lng: 12.593779
+//}
+//var marker1 = new google.maps.Marker({
+//    position: Rygergaarden,
+//    map: map,
+//    title: "I'm HOME",
+//    animation: google.maps.Animation.DROP
+//});
+//
+// marker Moonbar
+//var Moonbar = {
+//    lat: 55.706404,
+////    lng: 12.539379
+//}
+//var marker2 = new google.maps.Marker({
+//    position: Moonbar,
+//    map: map,
+//    title: 'ass to the grass',
+//    //icon: 'bicep.png'
+//    animation: google.maps.Animation.DROP
+//});

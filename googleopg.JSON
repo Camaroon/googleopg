@@ -1,35 +1,56 @@
 [
     {
-        "id": "marker1",
+        "id": "stop1",
         "navn": "MoonBar",
+        "position": {
+            "lat": 55.706325,
+            "lng": 12.539506
+        },
         "beskrivelse": "HEY! kom ind og drik en øl!",
         "motto": "Den øl smagt da vist lige af en til"
 
     },
     {
-        "id": "marker2",
+        "id": "stop2",
         "navn": "Rygergården",
+        "position": {
+            "lat": 55.706275,
+            "lng": 12.539721
+        },
+        "billede": "",
         "beskrivelse": "socialt samvær og dårlige lunger.. KOM FRISK",
         "motto": "Den der ryger.. giver sq lige en smøg til"
     },
     {
-        "id": "marker3",
+        "id": "stop3",
         "navn": "Lidl",
+        "position": {
+            "lat": 55.706342,
+            "lng": 12.538189
+        },
+        "billede": "",
         "beskrivelse": "Food-mekka for os som studerende. . ",
         "motto": "valnøddestykker... smager himmelsk!!"
     },
 
     {
-        "id": "marker4",
+        "id": "stop4",
         "navn": "Meels On Weels",
+        "position": {
+            "lat": 55.706447,
+            "lng": 12.539314
+        },
         "beskrivelse": "Survival kit 1.01",
         "motto": "Kaffe.. aldrig gå ned på kaffe"
     },
     {
-        "id": "marker4",
+        "id": "stop5",
         "navn": "Toilet",
-        "beskrivelse": "den evige hjælper i ale situationer - position:fixed",
+        "position": {
+            "lat": 55.706371,
+            "lng": 12.539258
+        },
+        "beskrivelse": "Den evige hjælper i ale situationer - position:fixed",
         "motto": "husk for helvede at trække ud!"
-    },
-
+    }
 ]

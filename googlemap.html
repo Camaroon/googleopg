@@ -6,6 +6,8 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="googlemap.css" type="text/css">
+
+
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -14,6 +16,7 @@
 </head>
 
 <body>
+
     <template id="template_info">
         <div id="info">
             <h1> information om hvor du er</h1>
@@ -22,191 +25,12 @@
         </div>
     </template>
     <div id="map"></div>
-    <script>
-        var map;
-        var info;
-
-
-        function initMap() {
-            // Styles a map in "night mode".
-            var info = document.querySelector('#info');
-
-            var map = new google.maps.Map(document.querySelector('#map'), {
-                center: {
-                    lat: 55.706467,
-                    lng: 12.539116
-                },
-                zoom: 12,
-                styles: [{
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#242f3e'
-                    }]
-                }, {
-                    elementType: 'labels.text.stroke',
-                    stylers: [{
-                        color: '#242f3e'
-                    }]
-                }, {
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#746855'
-                    }]
-                }, {
-                    featureType: 'administrative.locality',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                }, {
-                    featureType: 'poi',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                }, {
-                    featureType: 'poi.park',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#263c3f'
-                    }]
-                }, {
-                    featureType: 'poi.park',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#6b9a76'
-                    }]
-                }, {
-                    featureType: 'road',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#38414e'
-                    }]
-                }, {
-                    featureType: 'road',
-                    elementType: 'geometry.stroke',
-                    stylers: [{
-                        color: '#212a37'
-                    }]
-                }, {
-                    featureType: 'road',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#9ca5b3'
-                    }]
-                }, {
-                    featureType: 'road.highway',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#746855'
-                    }]
-                }, {
-                    featureType: 'road.highway',
-                    elementType: 'geometry.stroke',
-                    stylers: [{
-                        color: '#1f2835'
-                    }]
-                }, {
-                    featureType: 'road.highway',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#f3d19c'
-                    }]
-                }, {
-                    featureType: 'transit',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#2f3948'
-                    }]
-                }, {
-                    featureType: 'transit.station',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                }, {
-                    featureType: 'water',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#17263c'
-                    }]
-                }, {
-                    featureType: 'water',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#515c6d'
-                    }]
-                }, {
-                    featureType: 'water',
-                    elementType: 'labels.text.stroke',
-                    stylers: [{
-                        color: '#17263c'
-                    }]
-                }]
-            });
 
 
 
-            // marker Fitness World
-            var FWlatlng = {
-                lat: 55.706884,
-                lng: 12.587445
-            }
-            var marker2 = new google.maps.Marker({
-                position: FWlatlng,
-                map: map,
-                title: 'ass to the grass',
-                //icon: 'bicep.png'
-                animation: google.maps.Animation.DROP
-            });
 
-
-            // marker trelleborggade
-            var myHomeMarker = {
-                lat: 55.706887,
-                lng: 12.593779
-            }
-            var marker1 = new google.maps.Marker({
-                position: myHomeMarker,
-                map: map,
-                title: "I'm HOME",
-                animation: google.maps.Animation.DROP
-            });
-
-            var infowindow = new google.maps.InfoWindow({
-                content: "this is home.. home is good!"
-            })
-
-
-            // klik på marker og vis info:
-            // event listner på marker skal skrives som addListener,
-            marker1.addListener("click", clickOnMarker);
-            marker2.addListener("click", clickOnMarker);
-
-            //zoom, inforWondow og set center
-            function clickOnMarker() {
-                console.log("der er blevet klikket på ikon");
-                map.setCenter(myHomeMarker);
-                map.setZoom(18);
-
-                animation: google.maps.Animation.DROP;
-
-
-                // klon af info template
-                var klon = document.querySelector("#template_info").content.cloneNode(true);
-
-                //indset child til klon
-                infowindow.setContent(klon);
-                infowindow.open(map, marker1);
-
-
-            }
-
-
-
-        }
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="googleopg.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcr0SaYBmaq_QR3tI3odHKnS3S243Sbyk&callback=initMap" async defer></script>
 </body>
 
